@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/VideoFilter-master/lib/gluegen-rt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/VideoFilter-master/lib/video.jar!/" />
+      <root url="jar://$PROJECT_DIR$/VideoFilter-master/lib/gst1-java-core-0.9.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/VideoFilter-master/lib/slf4j-api-1.7.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/VideoFilter-master/lib/webcam-capture-0.3.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/VideoFilter-master/lib/core.jar!/" />
+      <root url="jar://$PROJECT_DIR$/VideoFilter-master/lib/gstreamer-java.jar!/" />
+      <root url="jar://$PROJECT_DIR$/VideoFilter-master/lib/slf4j-nop-1.7.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/VideoFilter-master/lib/jna.jar!/" />
+      <root url="jar://$PROJECT_DIR$/VideoFilter-master/lib/bridj-0.6.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/VideoFilter-master/lib/jogl-all.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

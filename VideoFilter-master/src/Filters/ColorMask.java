@@ -6,12 +6,12 @@ import core.DImage;
 
 public class ColorMask implements PixelFilter, Interactive {
     // yellow
-    int r = 255;
-    int g = 255;
-    int b = 0;
-
-    int distance = (int)(Math.sqrt(r*r + g*g + b*b));
-    int d = 0;
+    short r = 255;
+    short g = 255;
+    short b = 0;
+    double hue = 0;
+    double threshold = 10;
+    double currHue = 0;
     @Override
     public DImage processImage(DImage img) {
         short[][] red = img.getRedChannel();
@@ -20,9 +20,9 @@ public class ColorMask implements PixelFilter, Interactive {
 
         for (int i = 0; i < red.length; i++) {
             for (int j = 0; j < red[0].length; j++) {
-                d = (int)(Math.sqrt(red[i][j]*red[i][j] + green[i][j]*green[i][j] + blue[i][j]*blue[i][j]));
+                currHue = getHue(red[i][j],green[i][j],blue[i][j]);
 
-                if (Math.abs(d-distance) <= 50){
+                if (currHue > hue-threshold && currHue < hue+threshold){
                     red[i][j] = 255;
                     green[i][j] = 255;
                     blue[i][j] = 255;
@@ -44,10 +44,10 @@ public class ColorMask implements PixelFilter, Interactive {
         return img;
     }
 
-    private double getHue(int red, int green, int blue) {
-        double r = red/255.0;
-        double g = green/255.0;
-        double b = blue/255.0;
+    private double getHue(short red, short green, short blue) {
+        double r = red/1.0;
+        double g = green/1.0;
+        double b = blue/1.0;
         double hue = 0;
         double max = identifyMax(r,g,b);
         double min = identifyMin(r,g,b);
@@ -91,11 +91,22 @@ public class ColorMask implements PixelFilter, Interactive {
 
     @Override
     public void mouseClicked(int mouseX, int mouseY, DImage img) {
-
+        short[][] red = img.getRedChannel();
+        short[][] green = img.getGreenChannel();
+        short[][] blue = img.getBlueChannel();
+        r = red[mouseY][mouseX];
+        g = green[mouseY][mouseX];
+        b = blue[mouseY][mouseX];
+        hue = getHue(r,g,b);
     }
 
     @Override
     public void keyPressed(char key) {
-
+        if(key == 'g') {
+            threshold+=0.5;
+        }
+        if(key == 'h') {
+            threshold-=0.5;
+        }
     }
 }

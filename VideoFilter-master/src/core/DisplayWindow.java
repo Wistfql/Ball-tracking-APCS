@@ -263,7 +263,7 @@ public class DisplayWindow extends PApplet {
 
         frame = new DImage(img);
         filteredFrame = new DImage(frame);
-        filteredFrame.flipVertical();
+        //filteredFrame.flipVertical();
         filteredFrame = runFilters(filteredFrame);
 
         loading = false;

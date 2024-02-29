@@ -12,6 +12,16 @@ public class ColorMask implements PixelFilter, Interactive {
     double hue = 0;
     double threshold = 10;
     double currHue = 0;
+
+    // midpoints stuff
+    int start_i = 0;
+    int start_j = 0;
+    int end_i = 0;
+    int end_j = 0;
+
+    int midpoint_i = 0;
+    int midpoint_j = 0;
+
     @Override
     public DImage processImage(DImage img) {
         short[][] red = img.getRedChannel();
@@ -37,7 +47,6 @@ public class ColorMask implements PixelFilter, Interactive {
             }
 
         }
-
 
 
         img.setColorChannels(green, red, blue);
